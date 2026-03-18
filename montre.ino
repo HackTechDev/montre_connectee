@@ -5,6 +5,9 @@
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 32// OLED display height, in pixels
 
+unsigned long previousMillis = 0;
+unsigned long elapsedSeconds = 0;
+
 // Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
@@ -16,11 +19,6 @@ void setup() {
     for(;;);
   }
 
-  
-}
-
-void loop() {
-  
   delay(2000);
   
   display.clearDisplay();
@@ -61,6 +59,31 @@ void loop() {
   display.drawLine(32, 24, 128, 24, SSD1306_WHITE);
   display.drawLine(64, 16, 64, 48, SSD1306_WHITE);
 
+  display.display();
+  
+}
+
+void loop() {
+  
+ unsigned long currentMillis = millis();
+
+  // Incrémente toutes les secondes
+  if (currentMillis - previousMillis >= 1000) {
+    previousMillis += 1000;
+    elapsedSeconds++;
+  }
+
+  int heures = (elapsedSeconds / 3600) % 24;
+  int minutes = (elapsedSeconds / 60) % 60;
+  int secondes = elapsedSeconds % 60;
+
+  char buffer[9];
+  sprintf(buffer, "%02d:%02d:%02d", heures, minutes, secondes);
+
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setCursor(40, 20);
+  display.println(buffer);
   display.display();
 
 
