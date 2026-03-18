@@ -17,6 +17,10 @@ void setup() {
   }
 
   
+}
+
+void loop() {
+  
   delay(2000);
   
   display.clearDisplay();
@@ -45,14 +49,6 @@ void setup() {
   delay(5000);
   display.clearDisplay();
 
-  display.setCursor(40, 20);
-  display.println("NEKROS");
-  display.display();
-
-
-  delay(5000);
-  display.clearDisplay();
-
   display.drawCircle(64, 20, 5, SSD1306_WHITE);
   display.display();
 
@@ -68,8 +64,4 @@ void setup() {
   display.display();
 
 
-}
-
-void loop() {
-  
 }
