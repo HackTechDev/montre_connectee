@@ -30,27 +30,27 @@ void setup() {
   display.println("HACKLAB");
   display.display(); 
 
-  delay(5000);
+  delay(2000);
   display.clearDisplay();
 
   display.setCursor(40, 20);
   display.println("ILARD");
   display.display();
 
-  delay(5000);
+  delay(2000);
   display.clearDisplay();
 
   display.setCursor(40, 20);
   display.println("SAM");
   display.display();
 
-  delay(5000);
+  delay(2000);
   display.clearDisplay();
 
   display.drawCircle(64, 20, 5, SSD1306_WHITE);
   display.display();
 
-  delay(5000);
+  delay(2000);
   
   display.clearDisplay();
 
@@ -82,8 +82,13 @@ void loop() {
 
   display.clearDisplay();
   display.setTextSize(1);
-  display.setCursor(40, 20);
+
+  display.setCursor(40, 16); // ajusté pour centrer
+  display.println("16/03/26");
+
+  display.setCursor(40, 25);
   display.println(buffer);
+  
   display.display();
 
 
